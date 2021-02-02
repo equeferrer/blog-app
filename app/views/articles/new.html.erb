@@ -1,0 +1,34 @@
+<%# <h1>Articles#new</h1>
+<p>Find me in app/views/articles/new.html.erb</p> %>
+
+<%= form_with scope:@article, url: article_create_path , local:true do |f| %>
+	<p>
+	   <%= f.label :title %> <br/>
+	   <%= f.text_field :title %>
+	</p> 
+
+	<p>
+	   <%= f.label :author %> <br/>
+	   <%= f.text_field :author %>
+	</p> 
+
+	<p>
+	   <%= f.label :body %> <br/>
+	   <%= f.text_field :body %>
+	</p> 
+
+	<p>
+	   <%= f.submit %> <br/>
+	</p> 
+<% end %>
+
+<p>
+	<% if @article.errors.any?%>
+		<ul>
+			<% @article.errors.full_messages.each do |message| %>
+				<li> <%= message %> </li>
+			<% end %>
+		</ul>
+
+	<% end%>
+</p>

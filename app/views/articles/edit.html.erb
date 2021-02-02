@@ -1,0 +1,37 @@
+<h1> Edit Post</h1>
+
+<%#= form_with scope:@article, url:article_update_path, do |f| %>
+<%= form_for @article, url:article_update_path(@article) do |f| %>
+<%#= form_for url: article_update_path(@article), local:true do |f| %>
+<%#= form_with scope:@article, url: article_create_path , local:true do |f| %>
+
+	<p>
+	   <%= f.label :title %> <br/>
+	   <%= f.text_field :title %>
+	</p> 
+
+	<p>
+	   <%= f.label :author %> <br/>
+	   <%= f.text_field :author %>
+	</p> 
+
+	<p>
+	   <%= f.label :body %> <br/>
+	   <%= f.text_field :body %>
+	</p> 
+
+	<p>
+	   <%= f.submit "Update Post" %> <br/>
+	</p> 
+<% end %>
+
+<p>
+	<% if @article.errors.any?%>
+		<ul>
+			<% @article.errors.full_messages.each do |message| %>
+				<li> <%= message %> </li>
+			<% end %>
+		</ul>
+
+	<% end%>
+</p>

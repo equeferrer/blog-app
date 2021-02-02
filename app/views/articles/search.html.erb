@@ -1,0 +1,28 @@
+<h1>Articles#show</h1>
+<p>Find me in app/views/articles/show.html.erb</p>
+
+<%#= render index %>
+	<% if @articles.any?%>
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @articles.each do |article| %>
+        <tr>
+          <td> <%=article.id%></td>
+          <td> <%=article.title%></td>
+          <td> <%=article.body%></td>
+          <td> <%=article.author%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p> No matches to your query </p>
+	<% end %>
