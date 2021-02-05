@@ -1,34 +1,64 @@
-<%# <h1>Articles#new</h1>
-<p>Find me in app/views/articles/new.html.erb</p> %>
-
-<%= form_with scope:@article, url: article_create_path , local:true do |f| %>
-	<p>
-	   <%= f.label :title %> <br/>
-	   <%= f.text_field :title %>
-	</p> 
-
-	<p>
-	   <%= f.label :author %> <br/>
-	   <%= f.text_field :author %>
-	</p> 
-
-	<p>
-	   <%= f.label :body %> <br/>
-	   <%= f.text_field :body %>
-	</p> 
-
-	<p>
-	   <%= f.submit %> <br/>
-	</p> 
-<% end %>
-
-<p>
 	<% if @article.errors.any?%>
-		<ul>
-			<% @article.errors.full_messages.each do |message| %>
-				<li> <%= message %> </li>
-			<% end %>
-		</ul>
-
+		<div class="alert alert-warning alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<strong>Whoops!</strong> <%= @article.errors.full_messages.to_sentence %>
+		</div>
 	<% end%>
-</p>
+<div class="d-flex justify-content-between p-5">
+  <h1> Welcome! </h1>
+  <button class="btn custom-btn-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+		Create Post
+  </button>
+</div>
+
+
+<div class="collapse" id="collapseExample">
+  <div class="">
+		<div>
+		<%= form_with scope:@article, url: article_create_path , local:true do |f| %>
+			<div class="form-group ml-5 mr-5">
+				<div class="input-group mb-3">
+					<span class="input-group-text ml-5">Title*</span>
+					<%= f.text_field :title, class:"form-control mr-5 ml-n1" %>
+					<span class="input-group-text ml-5">Author</span>
+					<%= f.text_field :author, class:"form-control mr-5 ml-n1" %>
+				</div>
+				<div class="ml-5 mr-5">
+					<%= f.text_area :body , placeholder:"Enter Journal entry here...", class:"form-control", :columns => 100, :rows => 5 %>
+				</div>
+
+				<div class="mr-5 mt-2 mb-3">
+					<div style="float:right"> <%= f.submit :Submit, class: 'btn custom-btn' %> <br/> </div>
+				</div>
+			</div>
+		<% end %>
+    </div>
+  </div>
+  <br/> <br/>
+</div>
+
+<div class="container d-flex flex-row flex-wrap justify-content-around mb-5">
+  <% if !@articles.empty? %>
+    <% @articles.each do |article| %>
+      <div class="jumbotron jumbotron-fluid col-sm-5 mb-5" style="padding:0 !important">
+        <div class="mx-5 ml-5 mr-5 p-3">
+          <div  class="text-end align-bottom" >
+            <h1 class="p-0"> <%= article.title %> </h1>
+            <% if !article.author.empty? %>
+              <p class="mb-0 mt-n1">Author: <%= article.author %> </p>
+            <% else %>
+              <p class="mb-0 mt-n1">Author: <i>anonymous </i> </p>
+            <%end%>
+          </div>
+          <hr/>
+          <div class="text-truncate">
+            <%=article.body%>
+          </div>
+        </div>
+        <div class="text-end p-2 mr-3" style="text-align:right">
+          <%= link_to "View Post", article_show_path(article)%>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

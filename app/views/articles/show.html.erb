@@ -1,6 +1,18 @@
-<h1> <%= @article.title %> </h1>
-<h2> Author: <%= @article.author %> </h2>
-
-<p> <%= @article.body %> </p>
-
-<small> <%= @article.created_at %> </small>
+<div class="container mt-1 p-5">
+  <div class="d-flex justify-content-between align-items-end">
+    <div  class="text-end align-bottom" >
+      <h1 class="p-0"> <%= @article.title %> </h1>
+      <% if !@article.author.empty? %>
+        <p class="mb-0">Author: <%= @article.author %> </p>
+      <%end%>
+    </div>
+    <div class="text-end align-bottom" style="text-align: right">
+        <%= link_to fa_icon("edit"), article_edit_path(@article)%></i>
+        | <%= link_to fa_icon("trash"), article_delete_path(@article), :method => :Delete, data: {confirm: "Are you sure you want to delete this?"} %> <link rel="icon" href="https://avionschool.com/images/new-favicon.png" type="image/x-icon"> <br/>
+      <small class="text-end align-bottom "><i>Created: <%= @article.created_at.strftime('%b. %e, %Y')%> </i> </small> <br/>
+      <small class="text-end align-bottom"><i>Last updated: <%= time_ago_in_words(@article.updated_at)%> ago </i> </small> 
+    </div>
+  </div>
+  <hr/>
+  <p class="mt-4" style="text-indent: 2em"> <%= @article.body %> </p>
+</div>

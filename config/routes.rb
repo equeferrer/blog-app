@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/articles/edit/:id' => 'articles#edit', as: 'article_edit'
   patch '/articles/:id' => 'articles#update' , as: 'article_update'
   delete '/articles/:id' => 'articles#destroy', as: 'article_delete'
+  root 'articles#new'
+  # Cant have same 'get' and link but can have same /article
   # get 'articles/index'
   # get 'articles/show'
   # get 'articles/new'

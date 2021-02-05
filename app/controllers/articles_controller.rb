@@ -9,23 +9,24 @@ class ArticlesController < ApplicationController
 
   def search
     @articles = Article.where("title LIKE ?", "%#{params[:q]}%")
-        # Book.where("title = ?", params[:title])
   end
 
   def new
+    @articles = Article.all
     @article = Article.new
   end
 
   def create
-		@article = Article.new(article_params)
+    @article = Article.new(article_params)
+    @articles = Article.all
 		# @article.title = params[:title] #symbol to access params
 		# @article.body = params[:body]
 		# @article.author = params[:author]
 		
 		if @article.save
-			redirect_to articles_path
+			redirect_to article_show_path(@article)
 		else
-			render :new # takes out item if not successful
+			render :new
 		end		
   end
   

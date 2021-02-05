@@ -1,22 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <%= link_to 'Blog', articles_path, class:"navbar-brand"%>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #B53C36;">
+  <%= link_to 'Avion Journal', root_path, class:"navbar-brand mr-5"%>
   <%# <a class="navbar-brand" href="#">Blog</a> %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <span class="ml-2"></span>
+    <ul class="navbar-nav mr-auto ml-5">
       <li class="nav-item active">
-        <%= link_to 'Home', articles_path, class:"nav-link"%><span class="sr-only">(current)</span>
+        <%= link_to 'Home', root_path, class:"nav-link"%><span class="sr-only">(current)</span>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/articles">Articles</a>
       </li>
+      <li>
+        <%#= link_to "New Post", articles_new_path, class:"nav-link"%>
+      </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" action="/search">
-      <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <form class="form-inline my-2 my-lg-0 mr-5" action="/search">
+      <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search article titles..." aria-label="Search">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
     </form>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
   </div>
 </nav>

@@ -1,3 +1,9 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+textarea { resize: none; }
+.custom-btn { background-color: #B53C36; color:white; }
+.custom-btn:hover { opacity:0.9; background-color: #B53C36; color:white; }
+
+.custom-btn-2 { background-color: transparent; color:#B53C36; border: 1px solid #B53C36}
+.custom-btn-2:hover { opacity:0.9; background-color: #B53C36; color:white; }
